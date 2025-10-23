@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart - Shopy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="cart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;">SHOPY</a></div>
+      <ul class="nav-links">
+                <li><a href="index.html">Shop</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">New Arrivals</a></li>
+      </ul>
+      <div class="nav-icons">
+        <input type="text" id="searchBar" placeholder="Search products...">
+        <a href="#"><i class="fa fa-heart"></i></a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <section class="cart-list">
+      <h1>Your Cart</h1>
+      <div id="cartItems"></div>
+    </section>
+
+    <aside class="cart-sidebar">
+      <div class="summary">
+        <h3>Order Summary</h3>
+        <p>Subtotal: KSh <span id="cartTotal">0.00</span></p>
+        <a href="checkout.html" id="checkoutBtn" class="btn">Checkout</a>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <h2>SHOPY<span>.</span></h2>
+      <p>Your trusted marketplace for quality tech and lifestyle products across Kenya.</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="products.html">All Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="account.html">My Account</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Return Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Stay Connected</h3>
+      <p><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</p>
+      <p><i class="fa-solid fa-phone"></i> +254 712 345 678</p>
+      <p><i class="fa-solid fa-envelope"></i> support@shopy.co.ke</p>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 <strong>SHOPY</strong> — Crafted with ❤️ in Kenya</p>
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

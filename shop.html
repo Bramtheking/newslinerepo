@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOPY | All Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section with Navbar: Contains the site logo, navigation links (Home, Shop, Categories, etc.) and icons for search, favorites, and the cart -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">SHOPY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li class="dropdown">
+                    <a href="#">Categories <i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html?category=phones" class="category-phones">
+                            <i class="fa fa-mobile-alt"></i>
+                            Mobile Phones
+                            <span class="category-count">15</span>
+                        </a></li>
+                        <li><a href="shop.html?category=laptops" class="category-laptops">
+                            <i class="fa fa-laptop"></i>
+                            Laptops & Computers
+                            <span class="category-count">8</span>
+                        </a></li>
+                        <li><a href="shop.html?category=accessories" class="category-accessories">
+                            <i class="fa fa-headphones"></i>
+                            Accessories
+                            <span class="category-count">25</span>
+                        </a></li>
+                        <li><a href="shop.html?category=audio" class="category-audio">
+                            <i class="fa fa-volume-up"></i>
+                            Audio Devices
+                            <span class="category-count">12</span>
+                        </a></li>
+                        <li><a href="shop.html?category=gaming" class="category-gaming">
+                            <i class="fa fa-gamepad"></i>
+                            Gaming Consoles
+                            <span class="category-count">6</span>
+                        </a></li>
+                        <li><a href="shop.html?category=tv" class="category-tv">
+                            <i class="fa fa-tv"></i>
+                            Smart TVs
+                            <span class="category-count">10</span>
+                        </a></li>
+                        <li><a href="shop.html?category=smartwatch" class="category-accessories">
+                            <i class="fa fa-clock"></i>
+                            Smart Watches
+                            <span class="category-count">7</span>
+                        </a></li>
+                        <li><a href="shop.html?category=camera" class="category-accessories">
+                            <i class="fa fa-camera"></i>
+                            Cameras & Drones
+                            <span class="category-count">9</span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li><a href="shop.html?filter=new">New Arrivals</a></li>
+                <li><a href="shop.html?filter=sale">Sale</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fa fa-search"></i></a>
+                <a href="#"><i class="fa fa-heart"></i></a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Shop Layout Section: Contains the sidebar for filtering products and the product grid displaying available products -->
+    <section class="shop-layout">
+        
+        <!-- Sidebar: Includes product category filters and a price range slider for filtering by price -->
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#" data-category="all" class="active">All Products</a></li>
+                <li><a href="#" data-category="phones">Phones</a></li>
+                <li><a href="#" data-category="laptops">Laptops</a></li>
+                <li><a href="#" data-category="audio">Audio</a></li>
+                <li><a href="#" data-category="gaming">Gaming</a></li>
+                <li><a href="#" data-category="tv">TVs</a></li>
+                <li><a href="#" data-category="accessories">Accessories</a></li>
+            </ul>
+
+            <h3>Filter by Price</h3>
+            <!-- Range slider for price filtering -->
+            <input type="range" min="1000" max="100000" value="100000" id="price-range">
+            <p>Up to: <span id="price-value">KSh 100,000</span></p>
+        </aside>
+
+        <!-- Product Grid: Displays all available products with images, names, prices, and Add to Cart buttons -->
+        <div class="products">
+            <h2>All Products</h2>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-btn"><i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="product-grid">
+
+                <!-- Audio Product Example: Wireless Earbuds details with image, price and a button to add the item to the cart -->
+                <div class="product" data-id="1" data-name="Wireless Earbuds" data-price="6499" data-category="audio">
+                    <img src="images/wireless earbuds.png" alt="Wireless Earbuds" loading="lazy" width="300" height="180">
+                    <h3>Wireless Earbuds</h3>
+                    <p>KSh 6,499</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Phone Product Example: Latest Smartphone -->
+                <div class="product" data-id="2" data-name="Latest Smartphone" data-price="39999" data-category="phones">
+                    <img src="images/freepik_assistant_1759408274503.png" alt="Latest Smartphone" loading="lazy" width="300" height="180">
+                    <h3>Latest Smartphone</h3>
+                    <p>KSh 39,999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Laptop Product Example: High-Performance Laptop -->
+                <div class="product" data-id="5" data-name="High-Performance Laptop" data-price="89999" data-category="laptops">
+                    <img src="images/freepik_assistant_1759405778781.png" alt="High-Performance Laptop" loading="lazy" width="300" height="180">
+                    <h3>High-Performance Laptop</h3>
+                    <p>KSh 89,999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- TV Product Example: 4K Smart TV -->
+                <div class="product" data-id="10" data-name="4K Smart TV" data-price="64999" data-category="tv">
+                    <img src="images/smarttv.png" alt="4K Smart TV" loading="lazy" width="300" height="180">
+                    <h3>4K Smart TV</h3>
+                    <p>KSh 64,999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Gaming Product Example: Gaming Console -->
+                <div class="product" data-id="9" data-name="Gaming Console" data-price="49999" data-category="gaming">
+                    <img src="images/gaming console.png" alt="Gaming Console" loading="lazy" width="300" height="180">
+                    <h3>Gaming Console</h3>
+                    <p>KSh 49,999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Accessories Product Example: Powerbank 20,000mAh -->
+                <div class="product" data-id="8" data-name="Powerbank 20,000mAh" data-price="4999" data-category="accessories">
+                    <img src="images/powerbank.png" alt="Powerbank 20,000mAh" loading="lazy" width="300" height="180">
+                    <h3>Powerbank 20,000mAh</h3>
+                    <p>KSh 4,999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section: Contains copyright and site information -->
+    <footer>
+        <div class="footer-links">
+            <ul>
+                <li><a href="contact.html">About Us</a></li>
+                <li><a href="contact.html">FAQ</a></li>
+                <li><a href="contact.html">Shipping</a></li>
+                <li><a href="contact.html">Returns</a></li>
+                <li><a href="contact.html">Privacy Policy</a></li>
+                <li><a href="contact.html">Terms And Conditions</a></li>
+            </ul>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+        <div class="socials">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copy">&copy; 2024 SHOPY. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

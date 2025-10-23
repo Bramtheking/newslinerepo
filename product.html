@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - SHOPY</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+  <script src="https://kit.fontawesome.com/a2d9a64d7f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">SHOPY</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">Categories <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="shop.html?category=phones"><i class="fa-solid fa-mobile-screen"></i> Phones</a></li>
+          <li><a href="shop.html?category=laptops"><i class="fa-solid fa-laptop"></i> Laptops</a></li>
+          <li><a href="shop.html?category=tv"><i class="fa-solid fa-tv"></i> TVs</a></li>
+          <li><a href="shop.html?category=accessories"><i class="fa-solid fa-headphones"></i> Accessories</a></li>
+        </ul>
+      </li>
+      <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- Product Section -->
+  <section class="product-details">
+    <div class="image-gallery">
+      <img id="main-image" src="images/product-main.jpg" alt="Main Product Image" />
+      <div class="thumbnails">
+        <img src="images/product-1.jpg" alt="Thumbnail 1" />
+        <img src="images/product-2.jpg" alt="Thumbnail 2" />
+        <img src="images/product-3.jpg" alt="Thumbnail 3" />
+      </div>
+    </div>
+
+    <div class="purchase-info">
+      <h2>Samsung Galaxy S24 Ultra</h2>
+      <div class="price-row">
+        <p class="price">KSh 149,999</p>
+        <p class="stock">✅ In Stock</p>
+      </div>
+
+      <p id="product-description"></p>
+
+      <div class="buttons">
+        <button class="btn add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        <button class="btn buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</button>
+        <button class="btn wishlist"><i class="fa-regular fa-heart"></i> Wishlist</button>
+      </div>
+
+      <div class="delivery-info">
+        <p><i class="fa-solid fa-truck-fast"></i> Delivery: 2-4 business days</p>
+        <p><i class="fa-solid fa-rotate-left"></i> Returns within 7 days</p>
+        <p><i class="fa-solid fa-credit-card"></i> Pay via M-Pesa, Card, or on Delivery</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Specs -->
+  <section class="product-specs">
+    <h3>Product Details</h3>
+    <table>
+      <tbody id="specs-body"></tbody>
+    </table>
+  </section>
+
+  <!-- Similar Products -->
+  <section class="products">
+    <h2>Similar Products</h2>
+    <div class="product-grid" id="similar-products"></div>
+  </section>
+
+  <footer>
+    <p class="copy">&copy; 2025 SHOPY | All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>

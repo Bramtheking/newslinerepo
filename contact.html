@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SHOPY</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-page {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #1a2d3b;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #1a2d3b;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #ff6600;
+            margin-right: 15px;
+            width: 20px;
+        }
+        
+        .contact-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 20px;
+            color: #1a2d3b;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #ff6600;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #e65c00;
+        }
+        
+        .faq-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a2d3b;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .faq-item h4 {
+            color: #1a2d3b;
+            margin-bottom: 10px;
+        }
+        
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;">SHOPY</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li class="dropdown">
+                    <a href="#">Categories <i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html?category=phones" class="category-phones">
+                            <i class="fa fa-mobile-alt"></i>
+                            Mobile Phones
+                            <span class="category-count">15</span>
+                        </a></li>
+                        <li><a href="shop.html?category=laptops" class="category-laptops">
+                            <i class="fa fa-laptop"></i>
+                            Laptops & Computers
+                            <span class="category-count">8</span>
+                        </a></li>
+                        <li><a href="shop.html?category=accessories" class="category-accessories">
+                            <i class="fa fa-headphones"></i>
+                            Accessories
+                            <span class="category-count">25</span>
+                        </a></li>
+                        <li><a href="shop.html?category=audio" class="category-audio">
+                            <i class="fa fa-volume-up"></i>
+                            Audio Devices
+                            <span class="category-count">12</span>
+                        </a></li>
+                        <li><a href="shop.html?category=gaming" class="category-gaming">
+                            <i class="fa fa-gamepad"></i>
+                            Gaming Consoles
+                            <span class="category-count">6</span>
+                        </a></li>
+                        <li><a href="shop.html?category=tv" class="category-tv">
+                            <i class="fa fa-tv"></i>
+                            Smart TVs
+                            <span class="category-count">10</span>
+                        </a></li>
+                        <li><a href="shop.html?category=smartwatch" class="category-accessories">
+                            <i class="fa fa-clock"></i>
+                            Smart Watches
+                            <span class="category-count">7</span>
+                        </a></li>
+                        <li><a href="shop.html?category=camera" class="category-accessories">
+                            <i class="fa fa-camera"></i>
+                            Cameras & Drones
+                            <span class="category-count">9</span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li><a href="shop.html?filter=new">New Arrivals</a></li>
+                <li><a href="shop.html?filter=sale">Sale</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <input type="text" id="searchBar" placeholder="Search products...">
+                <a href="#"><i class="fa fa-heart"></i></a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>We're here to help! Get in touch with our team for any questions or support.</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Address</strong><br>
+                        Zuhura Place, Kenyatta Highway, Thika<br>
+                        Thika Town
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +254 718 541 598<br>
+                        +254 780 159 602
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        support@shopy.co.ke<br>
+                        info@shopy.co.ke
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Business Hours</strong><br>
+                        Monday - Friday: 8:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 4:00 PM<br>
+                        Sunday: Closed
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>What payment methods do you accept?</h4>
+                <p>We accept M-Pesa, Visa, Mastercard, and cash on delivery. All payments are processed securely.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How long does shipping take?</h4>
+                <p>Standard shipping takes 2-4 business days within Nairobi and 3-7 days for other regions in Kenya.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What is your return policy?</h4>
+                <p>We offer a 7-day return policy for unused items in original packaging. Contact us to initiate a return.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you offer warranty on products?</h4>
+                <p>Yes, all products come with manufacturer warranty. We also offer extended warranty options.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I track my order?</h4>
+                <p>Yes, you'll receive a tracking number via SMS and email once your order is shipped.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <ul>
+                <li><a href="contact.html">About Us</a></li>
+                <li><a href="contact.html">FAQ</a></li>
+                <li><a href="contact.html">Shipping</a></li>
+                <li><a href="contact.html">Returns</a></li>
+                <li><a href="contact.html">Privacy Policy</a></li>
+                <li><a href="contact.html">Terms And Conditions</a></li>
+            </ul>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+        <div class="socials">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copy">&copy; 2024 SHOPY. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
