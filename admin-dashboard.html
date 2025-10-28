@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin | Manage Products - SHOPY</title>
+  <title>Admin Dashboard - SHOPY</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -111,11 +110,26 @@
       cursor: pointer;
     }
 
-    #imageStatus {
+    #uploadStatus {
       display: block;
       margin-top: 8px;
       font-size: 14px;
       font-weight: 500;
+    }
+
+    .btn-edit {
+      background: #ff6600;
+      color: #fff;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: #fff;
+    }
+
+    .btn-view {
+      background: #6c757d;
+      color: #fff;
     }
 
     @media (max-width: 800px) {
@@ -133,7 +147,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
-        <li><a href="admin.html" class="active">Admin</a></li>
+        <li><a href="admin-dashboard.html" class="active">Admin Dashboard</a></li>
       </ul>
     </nav>
   </header>
@@ -143,17 +157,18 @@
     <div class="admin-grid">
       <section class="admin-form">
         <h3>Add / Update Product</h3>
+        
         <form id="productForm">
           <input type="hidden" id="productId">
-
-          <label for="name">Name</label>
-          <input type="text" id="name" required>
-
-          <label for="price">Price (KES)</label>
-          <input type="number" id="price" min="0" required>
-
-          <label for="category">Category</label>
-          <select id="category" required>
+          
+          <label for="productName">Name</label>
+          <input type="text" id="productName" required>
+          
+          <label for="productPrice">Price (KES)</label>
+          <input type="number" id="productPrice" min="0" required>
+          
+          <label for="productCategory">Category</label>
+          <select id="productCategory" required>
             <option value="audio">Audio</option>
             <option value="phones">Phones</option>
             <option value="laptops">Laptops</option>
@@ -161,23 +176,23 @@
             <option value="tv">TV</option>
             <option value="accessories">Accessories</option>
           </select>
-
+          
           <div class="image-upload-section">
-            <label for="imageInput">Product Image</label>
+            <label for="imageFile">Product Image</label>
             <div class="image-input-wrapper">
-              <input type="file" id="imageInput" accept="image/*">
+              <input type="file" id="imageFile" accept="image/*">
             </div>
-            <span id="imageStatus">No image selected</span>
+            <span id="uploadStatus">No image selected</span>
             <input type="hidden" id="imageUrl" value="">
             <div id="imagePreview" style="margin-top: 10px;"></div>
           </div>
-
-          <label for="description">Description</label>
-          <textarea id="description" rows="3" placeholder="Short marketing description"></textarea>
-
-          <label for="specs">Specs (one per line, key: value)</label>
-          <textarea id="specs" rows="5" placeholder="Battery: 5000mAh&#10;Weight: 180g&#10;Warranty: 1 year"></textarea>
-
+          
+          <label for="productDescription">Description</label>
+          <textarea id="productDescription" rows="3" placeholder="Short marketing description"></textarea>
+          
+          <label for="productSpecs">Specs (one per line, key: value)</label>
+          <textarea id="productSpecs" rows="5" placeholder="Battery: 5000mAh&#10;Weight: 180g&#10;Warranty: 1 year"></textarea>
+          
           <button type="submit" class="btn">Save Product</button>
         </form>
       </section>
@@ -194,16 +209,14 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="productsTable"></tbody>
+          <tbody id="productsTableBody"></tbody>
         </table>
       </section>
     </div>
   </main>
 
   <div id="toast-container" aria-live="polite"></div>
-
-  <!-- Load admin.js only, not script.js to avoid conflicts -->
-  <script src="admin.js"></script>
+  
+  <script src="admin-dashboard.js"></script>
 </body>
-
 </html>

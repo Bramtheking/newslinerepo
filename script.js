@@ -47,7 +47,6 @@ function showToast(message, type = 'success') {
     container.id = 'toast-container';
     document.body.appendChild(container);
   }
-
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.textContent = message;
@@ -182,6 +181,30 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartPage();
   }
 });
+// ===== Theme Toggle =====
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+// Check saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  document.body.classList.add('dark-theme');
+  themeIcon.classList.replace('fa-sun', 'fa-moon');
+}
+
+// When user clicks toggle
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+
+  if (document.body.classList.contains('dark-theme')) {
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+    localStorage.setItem('theme', 'light');
+  }
+});
+
 
 /**
  * Renders the cart page including items list, quantities, subtotals, and overall total.

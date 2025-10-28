@@ -6,6 +6,14 @@
     <title>SHOPY | All Products</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -72,8 +80,15 @@
                     <i class="fa fa-shopping-cart"></i>
                     <span id="cart-count">0</span>
                 </a>
+                  <!-- 🌗 Theme toggle button -->
+                 <button onclick="toggletheme()">
+    <button id="theme-toggle" aria-label="Toggle theme">
+        <i id="theme-icon" class="fa fa-sun"></i>
+    </button>
+
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <i class="fa fa-bars"></i>
+                </button>
                 </button>
             </div>
         </nav>
@@ -111,56 +126,8 @@
                 <button id="search-btn"><i class="fa fa-search"></i></button>
             </div>
 
-            <div class="product-grid">
-
-                <!-- Audio Product Example: Wireless Earbuds details with image, price and a button to add the item to the cart -->
-                <div class="product" data-id="1" data-name="Wireless Earbuds" data-price="6499" data-category="audio">
-                    <img src="images/wireless earbuds.png" alt="Wireless Earbuds" loading="lazy" width="300" height="180">
-                    <h3>Wireless Earbuds</h3>
-                    <p>KSh 6,499</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- Phone Product Example: Latest Smartphone -->
-                <div class="product" data-id="2" data-name="Latest Smartphone" data-price="39999" data-category="phones">
-                    <img src="images/freepik_assistant_1759408274503.png" alt="Latest Smartphone" loading="lazy" width="300" height="180">
-                    <h3>Latest Smartphone</h3>
-                    <p>KSh 39,999</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- Laptop Product Example: High-Performance Laptop -->
-                <div class="product" data-id="5" data-name="High-Performance Laptop" data-price="89999" data-category="laptops">
-                    <img src="images/freepik_assistant_1759405778781.png" alt="High-Performance Laptop" loading="lazy" width="300" height="180">
-                    <h3>High-Performance Laptop</h3>
-                    <p>KSh 89,999</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- TV Product Example: 4K Smart TV -->
-                <div class="product" data-id="10" data-name="4K Smart TV" data-price="64999" data-category="tv">
-                    <img src="images/smarttv.png" alt="4K Smart TV" loading="lazy" width="300" height="180">
-                    <h3>4K Smart TV</h3>
-                    <p>KSh 64,999</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- Gaming Product Example: Gaming Console -->
-                <div class="product" data-id="9" data-name="Gaming Console" data-price="49999" data-category="gaming">
-                    <img src="images/gaming console.png" alt="Gaming Console" loading="lazy" width="300" height="180">
-                    <h3>Gaming Console</h3>
-                    <p>KSh 49,999</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- Accessories Product Example: Powerbank 20,000mAh -->
-                <div class="product" data-id="8" data-name="Powerbank 20,000mAh" data-price="4999" data-category="accessories">
-                    <img src="images/powerbank.png" alt="Powerbank 20,000mAh" loading="lazy" width="300" height="180">
-                    <h3>Powerbank 20,000mAh</h3>
-                    <p>KSh 4,999</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
+            <div class="products-grid">
+                <!-- Products will be loaded dynamically from Firebase -->
             </div>
         </div>
     </section>
@@ -191,5 +158,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="firebase-products.js"></script></script>
 </body>
 </html>

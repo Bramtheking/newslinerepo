@@ -1,25 +1,31 @@
-// --- Product dataset (kept small and in-file for demo) ---
-const PRODUCTS = {
-  '1': { id: '1', name: 'Wireless Earbuds', price: 6499, category: 'audio', image: 'images/wireless earbuds.png' },
-  '2': { id: '2', name: 'Smart Watch', price: 14999, category: 'accessories', image: 'images/smartwatches.png' },
-  '3': { id: '3', name: 'Portable Bluetooth Speaker', price: 7999, category: 'audio', image: 'images/portable audio.png' },
-  '4': { id: '4', name: 'Camera Drone', price: 54999, category: 'accessories', image: 'images/drone2.png' },
-  '5': { id: '5', name: 'High-Performance Laptop', price: 89999, category: 'laptops', image: 'images/freepik_assistant_1759405778781.png' },
-  '6': { id: '6', name: 'Latest Smartphone', price: 39999, category: 'phones', image: 'images/freepik_assistant_1759408274503.png' },
-  '7': { id: '7', name: 'Premium Headphones', price: 12499, category: 'audio', image: 'images/headphones.png' },
-  '8': { id: '8', name: 'Powerbank 20,000mAh', price: 4999, category: 'accessories', image: 'images/powerbank.png' },
-  '9': { id: '9', name: 'Gaming Console', price: 49999, category: 'gaming', image: 'images/gaming console.png' },
-  '10': { id: '10', name: '4K Smart TV', price: 64999, category: 'tv', image: 'images/smarttv.png' }
-};
-
-// Merge admin-saved products (from localStorage) with static dataset
-function getAllProducts() {
-  let merged = { ...PRODUCTS };
+// Load products from Firebase
+async function getAllProducts() {
   try {
-    const admin = JSON.parse(localStorage.getItem('shopy_products_admin')) || [];
-    admin.forEach(p => { merged[String(p.id)] = p; });
-  } catch (e) {}
-  return merged;
+    const snapshot = await window.firebaseDb.collection('products').get();
+    const products = {};
+    snapshot.docs.forEach(doc => {
+      const data = doc.data();
+      products[doc.id] = { id: doc.id, ...data };
+    });
+    return products;
+  } catch (error) {
+    console.error('Error loading products:', error);
+    return {};
+  }
+}
+
+// Load single product from Firebase
+async function getProductById(productId) {
+  try {
+    const doc = await window.firebaseDb.collection('products').doc(productId).get();
+    if (doc.exists) {
+      return { id: doc.id, ...doc.data() };
+    }
+    return null;
+  } catch (error) {
+    console.error('Error loading product:', error);
+    return null;
+  }
 }
 
 function getQueryParam(key) {
@@ -42,8 +48,10 @@ function populateProductPage(product) {
   if (titleEl) titleEl.textContent = product.name;
   if (priceEl) priceEl.textContent = formatKES(product.price);
   if (document) document.title = product.name + ' - Shopy';
+  
+  const imageUrl = product.imageUrl || product.image || '';
   if (mainImage) {
-    mainImage.src = product.image;
+    mainImage.src = imageUrl;
     mainImage.alt = product.name;
   }
 
@@ -58,9 +66,9 @@ function populateProductPage(product) {
 
   if (thumbsWrap) {
     thumbsWrap.innerHTML = `
-      <img src="${product.image}" alt="${product.name} thumbnail" />
-      <img src="${product.image}" alt="${product.name} thumbnail" />
-      <img src="${product.image}" alt="${product.name} thumbnail" />
+      <img src="${imageUrl}" alt="${product.name} thumbnail" />
+      <img src="${imageUrl}" alt="${product.name} thumbnail" />
+      <img src="${imageUrl}" alt="${product.name} thumbnail" />
     `;
     // Rebind thumbnail click handlers
     thumbsWrap.querySelectorAll('img').forEach(thumb => {
@@ -72,12 +80,26 @@ function populateProductPage(product) {
 }
 
 // Cart + Buy Now + Wishlist
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Resolve product by id
-  const id = getQueryParam('id') || '1';
-  const product = getAllProducts()[id];
-  if (product) {
-    populateProductPage(product);
+  const id = getQueryParam('id');
+  if (!id) {
+    document.body.innerHTML = '<div style="text-align: center; padding: 40px;">Product not found</div>';
+    return;
+  }
+  
+  try {
+    const product = await getProductById(id);
+    if (product) {
+      populateProductPage(product);
+    } else {
+      document.body.innerHTML = '<div style="text-align: center; padding: 40px;">Product not found</div>';
+      return;
+    }
+  } catch (error) {
+    console.error('Error loading product:', error);
+    document.body.innerHTML = '<div style="text-align: center; padding: 40px; color: red;">Error loading product</div>';
+    return;
   }
   // Add to cart functionality
   const addToCartBtn = document.querySelector('.add-to-cart');
@@ -170,23 +192,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Populate similar products based on current product category
-document.addEventListener('DOMContentLoaded', () => {
-  const id = getQueryParam('id') || '1';
-  const all = getAllProducts();
-  const current = all[id];
-  const grid = document.getElementById('similar-products');
-  if (!grid || !current) return;
+document.addEventListener('DOMContentLoaded', async () => {
+  const id = getQueryParam('id');
+  if (!id) return;
+  
+  try {
+    const current = await getProductById(id);
+    const grid = document.getElementById('similar-products');
+    if (!grid || !current) return;
 
-  const candidates = Object.values(all)
-    .filter(p => p.category === current.category && p.id !== current.id)
-    .slice(0, 3);
+    const all = await getAllProducts();
+    const candidates = Object.values(all)
+      .filter(p => p.category === current.category && p.id !== current.id)
+      .slice(0, 3);
 
-  grid.innerHTML = candidates.map(p => `
-    <div class="product-card">
-      <img src="${p.image}" alt="${p.name}" loading="lazy" />
-      <h4>${p.name}</h4>
-      <p>${formatKES(p.price)}</p>
-      <a href="product.html?id=${p.id}" class="btn">View</a>
-    </div>
-  `).join('');
+    grid.innerHTML = candidates.map(p => `
+      <div class="product-card">
+        <img src="${p.imageUrl || p.image || ''}" alt="${p.name}" loading="lazy" />
+        <h4>${p.name}</h4>
+        <p>${formatKES(p.price)}</p>
+        <a href="product.html?id=${p.id}" class="btn">View</a>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Error loading similar products:', error);
+  }
 });
